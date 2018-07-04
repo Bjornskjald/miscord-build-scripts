@@ -15,11 +15,11 @@ download_dependencies () {
 }
 
 get_script () {
-  wget "https://raw.githubusercontent.com/Bjornskjald/miscord-build-scripts/master/$1" -O "scripts/$1"
+  wget --quiet "https://raw.githubusercontent.com/Bjornskjald/miscord-build-scripts/master/$1" -O "scripts/$1"
   chmod +x "scripts/$1"
 }
 get_asset () {
-  wget "https://github.com/Bjornskjald/miscord-build-scripts/releases/download/assets/$1" -O "assets/$1"
+  wget --quiet "https://github.com/Bjornskjald/miscord-build-scripts/releases/download/assets/$1" -O "assets/$1"
   unzip "assets/$1"
 }
 
