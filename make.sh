@@ -72,7 +72,8 @@ source scripts/package-mac.sh
 assets=()
 for f in build/*; do [ -f "$f" ] && assets+=(-a "$f"); done
 MESSAGE="Release generated automatically with [\`miscord-build-scripts\`](https://github.com/Bjornskjald/miscord-build-scripts/) via [\`hub\`](https://github.com/github/hub/)"
-FULL=$VERSION'\n'$MESSAGE
+FULL="$VERSION
+$MESSAGE"
 scripts/hub release create "${assets[@]}" -m "$FULL" "$VERSION"
 
 source scripts/snap.sh
