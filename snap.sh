@@ -10,7 +10,7 @@ cp assets/snap/icon.png build/snap-x64/
 sed s/%version-here%/$VERSION/ assets/snap/snapcraft.yaml | sed 's/%arch-here%/amd64/' > build/snap-x64/snapcraft.yaml
 pushd build/snap-x64
 docker run --rm -v $PWD:$PWD -w $PWD snapcore/snapcraft snapcraft
-docker run --rm -v $PWD:$PWD -v $SNAP_CONFIG:$SNAP_CONFIG -w $PWD snapcore/snapcraft snapcraft push miscord_$VERSION_amd64.snap --release=stable
+docker run --rm -v $PWD:$PWD -v $SNAP_CONFIG:$SNAP_CONFIG -w $PWD snapcore/snapcraft snapcraft push miscord_"$VERSION"_amd64.snap --release=stable
 popd
 
 # cp build/miscord-linux-x86.run build/snap-x86/prime/bin/miscord

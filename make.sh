@@ -80,7 +80,7 @@ MESSAGE="Release generated automatically with [\`miscord-build-scripts\`](https:
 FULL="$VERSION
 
 $MESSAGE"
-scripts/hub release create "${assets[@]}" -m "$FULL" "$VERSION"
+scripts/hub release create "${assets[@]}" -m "$FULL" "v$VERSION"
 
 source scripts/snap.sh
 
