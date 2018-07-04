@@ -22,7 +22,7 @@ download_dependencies () {
   get_asset snap.zip
   get_asset makeself.zip
 
-  wget "https://github.com/github/hub/releases/download/v2.4.0/hub-linux-amd64-2.4.0.tgz"
+  wget --quiet "https://github.com/github/hub/releases/download/v2.4.0/hub-linux-amd64-2.4.0.tgz"
   tar -xzf hub-linux-amd64-2.4.0.tgz
   mv hub-linux-amd64-2.4.0/bin/hub scripts/hub
   rm -r hub-linux-amd64-2.4.0.tgz hub-linux-amd64-2.4.0
