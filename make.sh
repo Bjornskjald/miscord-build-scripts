@@ -70,9 +70,10 @@ wait
 source scripts/package-mac.sh
 
 assets=()
-for f in "$asset_dir"/*; do [ -f "$f" ] && assets+=(-a "$f"); done
+for f in build/*; do [ -f "$f" ] && assets+=(-a "$f"); done
 MESSAGE="Release generated automatically with [\`miscord-build-scripts\`](https://github.com/Bjornskjald/miscord-build-scripts/) via [\`hub\`](https://github.com/github/hub/)"
-scripts/hub release create "${assets[@]}" -m "$VERSION\n$MESSAGE" "$VERSION"
+FULL=$VERSION'\n'$MESSAGE
+scripts/hub release create "${assets[@]}" -m "$FULL" "$VERSION"
 
 source scripts/snap.sh
 
