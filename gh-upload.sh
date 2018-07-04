@@ -4,7 +4,7 @@
 # License: MIT
 # https://gist.github.com/stefanbuck/ce788fee19ab6eb0b4447a85fc99f447
 
-echo "Uploading asset $2..."
+echo "Uploading asset $1..."
 
 set -e
 xargs=$(which gxargs || which xargs)
@@ -24,7 +24,7 @@ response=$(curl -sH "$AUTH" "https://api.github.com/$GH_REPO/releases/latest")
 eval $(echo "$response" | grep -m 1 "id.:" | grep -w id | tr : = | tr -cd '[[:alnum:]]=')
 [ "$id" ] || { echo "Error: Failed to get release id for tag: $tag"; echo "$response" | awk 'length($0)<100' >&2; exit 1; }
 
-FILENAME=$(echo $2 | sed s/-/-$VERSION-/)
+FILENAME=$(echo $1 | sed s/-/-$VERSION-/)
 
 # Construct url
 GH_ASSET="https://uploads.github.com/$GH_REPO/releases/$id/assets?name=$(basename $FILENAME)"
