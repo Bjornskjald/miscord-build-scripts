@@ -30,8 +30,6 @@ create_release () {
   curl -v -i -X POST -H "Content-Type:application/json" -H $AUTH $URL -d 
 }
 
-source scripts/makeself.sh
-
 # --- functions end ---
 
 VERSION=$(node -pe "require('./package.json').version")
@@ -48,6 +46,8 @@ npm run build:win -- -o build/miscord-win.exe &
 # npm run build:win32 -- -o build/miscord-$VERSION-win-x86.exe &
 npm run build:mac -- -o build/miscord-macos &
 wait
+
+source scripts/makeself.sh
 
 makeself_linux_x64 &
 # makeself_linux_x86 &
