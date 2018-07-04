@@ -72,12 +72,13 @@ source scripts/package-mac.sh
 assets=()
 for f in build/*; do
   if ! [ -f "$f" ]; then continue; fi
-  asset_name=$(echo "$f" | sed s/-/-$VERSION-/)
+  asset_name=$(basename "$f" | sed s/-/-$VERSION-/)
   assets+=(-a "$f#$asset_name")
 done
 
 MESSAGE="Release generated automatically with [\`miscord-build-scripts\`](https://github.com/Bjornskjald/miscord-build-scripts/) via [\`hub\`](https://github.com/github/hub/)"
 FULL="$VERSION
+
 $MESSAGE"
 scripts/hub release create "${assets[@]}" -m "$FULL" "$VERSION"
 
