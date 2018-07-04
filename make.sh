@@ -21,6 +21,11 @@ download_dependencies () {
   get_asset Miscord.app.zip
   get_asset snap.zip
   get_asset makeself.zip
+
+  wget "https://github.com/github/hub/releases/download/v2.4.0/hub-linux-amd64-2.4.0.tgz"
+  tar -xzf hub-linux-amd64-2.4.0.tgz
+  mv hub-linux-amd64-2.4.0/bin/hub scripts/hub
+  rm -r hub-linux-amd64-2.4.0.tgz hub-linux-amd64-2.4.0
 }
 
 get_script () {
@@ -33,13 +38,6 @@ get_asset () {
   pushd "assets"
   unzip -qq "$1"
   popd
-}
-
-create_release () {
-  AUTH="Authorization: token $GITHUB_API_TOKEN"
-  local URL="https://api.github.com/repos/Bjornskjald/miscord/releases"
-  local DATA='{"tag_name":"v'$VERSION'","target_commitish": "master","name": "'$VERSION'","body": "Release created automatically from Travis build.","draft": false,"prerelease": false}'
-  curl -v -i -X POST -H "Content-Type:application/json" -H $AUTH $URL -d $DATA
 }
 
 # --- functions end ---
@@ -73,9 +71,10 @@ source scripts/package-mac.sh
 
 create_release
 
-for file in build/miscord-*; do
-  scripts/gh-upload.sh $file
-done
+assets=()
+for f in "$asset_dir"/*; do [ -f "$f" ] && assets+=(-a "$f"); done
+MESSAGE="Release generated automatically with [`miscord-build-scripts`](https://github.com/Bjornskjald/miscord-build-scripts/) via [`hub`](https://github.com/github/hub/)"
+scripts/hub release create "${assets[@]}" -m "$VERSION\n$MESSAGE" "$VERSION"
 
 source scripts/snap.sh
 
