@@ -20,7 +20,7 @@ get_script () {
 }
 get_asset () {
   wget --quiet "https://github.com/Bjornskjald/miscord-build-scripts/releases/download/assets/$1" -O "assets/$1"
-  unzip "assets/$1"
+  unzip -qq "assets/$1"
 }
 
 create_release () {
@@ -39,6 +39,8 @@ mkdir -p build
 
 echo "Downloading dependencies..."
 download_dependencies
+
+npm install
 
 npm run build:linux -- -o build/miscord-linux-x64 &
 # npm run build:linux32 -- -o build/miscord-$VERSION-linux-x86 &
