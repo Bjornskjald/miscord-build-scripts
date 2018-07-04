@@ -70,7 +70,12 @@ wait
 source scripts/package-mac.sh
 
 assets=()
-for f in build/*; do [ -f "$f" ] && assets+=(-a "$f"); done
+for f in build/*; do 
+  if ! [ -f "$f" ] continue
+  asset_name=$(echo $f | sed s/-/-$VERSION-/)
+  assets+=(-a "$f#$asset_name")
+done
+
 MESSAGE="Release generated automatically with [\`miscord-build-scripts\`](https://github.com/Bjornskjald/miscord-build-scripts/) via [\`hub\`](https://github.com/github/hub/)"
 FULL="$VERSION
 $MESSAGE"
