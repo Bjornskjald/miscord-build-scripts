@@ -1,6 +1,10 @@
 #!/bin/bash
 
 # --- functions ---
+# https://stackoverflow.com/questions/25288194/
+pushd () { pushd "$@" > /dev/null }
+popd ()  { popd "$@" > /dev/null  }
+
 download_dependencies () {
   mkdir "scripts" "assets"
 
