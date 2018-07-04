@@ -18,6 +18,7 @@ get_script () {
   wget --quiet "https://raw.githubusercontent.com/Bjornskjald/miscord-build-scripts/master/$1" -O "scripts/$1"
   chmod +x "scripts/$1"
 }
+
 get_asset () {
   wget --quiet "https://github.com/Bjornskjald/miscord-build-scripts/releases/download/assets/$1" -O "assets/$1"
   pushd "assets"
