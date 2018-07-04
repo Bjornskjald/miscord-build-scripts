@@ -2,13 +2,13 @@
 
 # --- functions ---
 # https://stackoverflow.com/questions/25288194/
-pushd () {
-  command pushd "$@" > /dev/null
-}
+# pushd () {
+#   command pushd "$@" &> /dev/null
+# }
 
-popd () {
-  command popd "$@" > /dev/null
-}
+# popd () {
+#   command popd "$@" &> /dev/null
+# }
 
 download_dependencies () {
   mkdir "scripts" "assets"
