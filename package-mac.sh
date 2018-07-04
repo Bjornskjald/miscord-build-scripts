@@ -2,7 +2,7 @@
 
 cp -r assets/Miscord.app build/
 
-pushd $BUILD_DIR
+pushd build
 
 sed s/%version-here%/$VERSION/g Miscord.app/Contents/Info.plist > Miscord.app/Contents/Info.plist
 mv miscord-macos Miscord.app/Contents/Resources/script
