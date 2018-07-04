@@ -39,7 +39,7 @@ create_release () {
   AUTH="Authorization: token $GITHUB_API_TOKEN"
   local URL="https://api.github.com/repos/Bjornskjald/miscord/releases"
   local DATA='{"tag_name":"v'$VERSION'","target_commitish": "master","name": "'$VERSION'","body": "Release created automatically from Travis build.","draft": false,"prerelease": false}'
-  curl -v -i -X POST -H "Content-Type:application/json" -H $AUTH $URL -d 
+  curl -v -i -X POST -H "Content-Type:application/json" -H $AUTH $URL -d $DATA
 }
 
 # --- functions end ---
