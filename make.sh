@@ -70,9 +70,9 @@ wait
 source scripts/package-mac.sh
 
 assets=()
-for f in build/*; do 
-  if ! [ -f "$f" ] continue
-  asset_name=$(echo $f | sed s/-/-$VERSION-/)
+for f in build/*; do
+  if ! [ -f "$f" ]; then continue; fi
+  asset_name=$(echo "$f" | sed s/-/-$VERSION-/)
   assets+=(-a "$f#$asset_name")
 done
 
