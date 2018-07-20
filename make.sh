@@ -52,7 +52,7 @@ download_dependencies
 
 npm install
 
-npm run build:linux -- -o build/miscord-linux-x64 &
+npm run build:linux -- -o build/miscord-linux &
 # npm run build:linux32 -- -o build/miscord-$VERSION-linux-x86 &
 npm run build:win -- -o build/miscord-win.exe &
 # npm run build:win32 -- -o build/miscord-$VERSION-win-x86.exe &
@@ -61,7 +61,7 @@ wait
 
 source scripts/makeself.sh
 
-makeself_linux_x64 &
+makeself_linux &
 # makeself_linux_x86 &
 makeself_mac &
 wait

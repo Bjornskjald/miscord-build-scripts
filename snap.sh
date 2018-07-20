@@ -6,7 +6,7 @@ mkdir -p $SNAP_CONFIG
 mkdir -p build/snap-x64/{snap,prime/bin}
 # mkdir -p build/snap-x86/{snap,prime/bin}
 
-cp build/miscord-linux-x64.run build/snap-x64/prime/bin/miscord
+cp build/miscord-linux.run build/snap-x64/prime/bin/miscord
 cp assets/snap/icon.png build/snap-x64/
 cp assets/snap/snapcraft.cfg $SNAP_CONFIG/
 set s/%macaroon%/$SNAP_MACAROON/ assets/snap/snapcraft.cfg | sed s/%unbound_discharge%/$SNAP_UNBOUND_DISCHARGE/ | sed s/%email%/$SNAP_EMAIL/ > $SNAP_CONFIG/snapcraft.cfg

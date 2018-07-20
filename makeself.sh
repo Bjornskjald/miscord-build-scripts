@@ -1,10 +1,10 @@
-makeself_linux_x64 () {
-  local DIR="tmp-ms-linux-x64"
+makeself_linux () {
+  local DIR="tmp-ms-linux"
 
   mkdir $DIR
-  mv build/miscord-linux-x64 $DIR
-  makeself $DIR miscord-linux-x64
-  mv miscord-linux-x64.run build/
+  mv build/miscord-linux $DIR
+  makeself $DIR miscord-linux
+  mv miscord-linux.run build/
   rm -r $DIR
 }
 
